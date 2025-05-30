@@ -1,49 +1,72 @@
-## Git Inilitization
-1. `git init` : Inilitize the repo.
-    - This command create a hidden folder called `.git` which store all files to track the files and history.
+## Git Initialization & Basics
 
-2. `git add [<file>]` : For staging the files
-    -`git add <file>` - Stage a file
-    -`git add --all`  - Stage all changes
+### 1. `git init` – Initialize the Repository
+- Creates a hidden folder called `.git` that tracks changes and stores history for the project.
 
-    - After staging the files you can check for the tracked files 
-        -`git status` - See what is staged
-        -`git restore --staged <file>` - Unstage a file
+---
 
-3. `git status` : Check for tracked and untracked files.
-    - Gives information about traked and untracked files in the git repository.
-    - `Untracked` files are files that Git is not yet tracking.
-    - `Tracked` file is a file that Git is tracking for changes.
-    - For Git to track your files it should be in staging area.
+### 2. `git add` – Stage Files for Commit
+- `git add <file>` – Stage a specific file.
+- `git add --all` – Stage all changes (new, modified, deleted files).
 
-4. `git commit -m "message"` : Commit snapshots the project.
-    - `commit` is save point of the project.
-    - It records snapshot of files at a certain time, with a message describing what changed.
-    - `git commit -m "message"` : Save your staged changes
-    - `git commit -a -m "message"` : Automatically stage all tracked files that have been modified before committing but skip untracked/new files.
-    - `git commit` command will open default code editor, using this you can write multi-line comment.
-        - Write short summary of commit (&lt; 50 chars)
-        - Use imperative mood (eg. "Add feature" not "Added feature")
-        - Leave 1 blank line
-        - Write detail of comment.
+**Check the status of staged/unstaged files:**
+- `git status` – Show what's staged, modified, or untracked.
+- `git restore --staged <file>` – Unstage a file.
 
-5. Other Useful Commit Options
-    1. Create an empty commit: `For marking`
-        - git commit --allow-empty -m "Start project"
-    2. Use previous commit message (no editor):
-        - git commit --no-edit
-    3. Quickly add staged changes to last commit, keep message:
-        - git commit --amend --no-edit
+---
 
-6. Troubleshooting some common commit mistakes
-    - Forgot to stage a file?
-        - If you run git commit -m "message" but forgot to git add a file, just add it and commit again. Or use git commit --amend to add it to your last commit.
-    - Typo in your commit message?
-        - Use git commit --amend -m "Corrected message" to fix the last commit message.
-    - Accidentally committed the wrong files?
-        - You can use git reset --soft HEAD~1 to undo the last commit and keep your changes staged.
+### 3. `git status` – Show Current State
+- Displays:
+  - **Untracked files** – Not yet tracked by Git.
+  - **Tracked files** – Being monitored by Git for changes.
+- Files must be staged to be tracked and committed.
 
-7. View commit history
-    - `git log` : View history of repository
-    - `git log --oneline` : View only condensed hash code and commit message
-    - `git log --stat` : See stat about updated files
+---
+
+### 4. `git commit -m "message"` – Commit Snapshot of Project
+- A commit is a save point capturing the current state of staged files.
+- `git commit -m "message"` – Save staged changes with a message.
+- `git commit -a -m "message"` – Automatically stage and commit all modified tracked files.
+- `git commit` – Opens editor for writing a detailed message.
+
+**Commit message guidelines:**
+- Short summary under 50 characters.
+- Use imperative mood (e.g., "Fix bug", not "Fixed bug").
+- Leave one blank line before detailed description.
+
+---
+
+### 5. Other Useful Commit Options
+
+1. **Create an empty commit (for marking purposes):**
+   - `git commit --allow-empty -m "Start project"`
+
+2. **Use previous commit message (skip editor):**
+   - `git commit --no-edit`
+
+3. **Amend the last commit (keep message):**
+   - `git commit --amend --no-edit`
+
+---
+
+### 6. Troubleshooting Common Commit Mistakes
+
+- **Forgot to stage a file?**
+  - Run `git add <file>` and either:
+    - Make a new commit, or
+    - Use `git commit --amend` to add to the previous one.
+
+- **Typo in your commit message?**
+  - Use `git commit --amend -m "Corrected message"`.
+
+- **Accidentally committed wrong files?**
+  - Undo last commit and keep changes staged:
+    - `git reset --soft HEAD~1`
+
+---
+
+### 7. View Commit History
+
+- `git log` – View full commit history.
+- `git log --oneline` – Condensed hash and message view.
+- `git log --stat` – See stats about updated files.
